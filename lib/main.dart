@@ -46,9 +46,27 @@ class _MyHomePageState extends State<MyHomePage> {
             children: [
               // Text('Date: ${time.day}/${time.month}/${time.year}'),
               Text('Date: ${DateFormat('jms').format(time)}'),
-              ElevatedButton(onPressed: () {
-                setState(() {
-              });}, child: Text('Click to Refrash'))
+              ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+              });}, child: Text('Refrash Time')),
+              const Text('Pick Date', style: TextStyle(fontSize: 20),),
+              ElevatedButton(onPressed: () async {
+                 DateTime? picDate = await  showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2023));
+                 if(picDate != null) {
+                   print('Date is : ${picDate.year}:${picDate.month}:${picDate.day}');
+                 }
+              }, child: const Text('Pick Date')),
+              ElevatedButton(onPressed: () async {
+                TimeOfDay? pickTime = await showTimePicker(context: context, initialTime: TimeOfDay.now(), initialEntryMode: TimePickerEntryMode.dial);
+                if(pickTime != null) {
+                  print('Date is : ${pickTime.hour}:${pickTime.minute}');
+                }
+              }, child: const Text('Pick Time'),)
             ],
           ),
         ));
