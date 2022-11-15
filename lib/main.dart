@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                  if(picDate != null) {
                    print('Date is : ${picDate.year}:${picDate.month}:${picDate.day}');
                  }
+
               }, child: const Text('Pick Date')),
               ElevatedButton(onPressed: () async {
                 TimeOfDay? pickTime = await showTimePicker(context: context, initialTime: TimeOfDay.now(), initialEntryMode: TimePickerEntryMode.dial);
